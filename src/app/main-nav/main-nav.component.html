@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/demo">Demo</a>
+      <a mat-list-item routerLink="/arrdemo">Arr Demo</a>
+      <a mat-list-item routerLink="/task">Task</a>
+      <a mat-list-item routerLink="/addtask">Add Task</a>
+      <a mat-list-item routerLink="/dragdrop">Drag Drop</a>
+      <a mat-list-item routerLink="/addform">demo form</a>
+      <a mat-list-item routerLink="/table">demo table</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>jinal Shah</span>
+    </mat-toolbar>
+    <!-- <cdk-virtual-scroll-viewport itemSize="100" style="height: 100%;" >
+
+
+      <div  *cdkVirtualFor="let item of arrNumber" >
+
+        <p class="animated slideInRight" style="width: 100%;height: 100px;border: solid 2px blue;display: inline-flex;justify-content: center;align-items: center" >
+          {{item}}
+        </p>
+      </div>
+    </cdk-virtual-scroll-viewport> -->
+   <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
